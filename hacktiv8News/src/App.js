@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 import {
   View,
-  TouchableWithoutFeedback,
-  Keyboard,
   StyleSheet,
   Navigator
 } from 'react-native'
@@ -27,14 +25,49 @@ class App extends Component {
     })
   }
 
+  // goToNews(navigator){
+  //   navigator.pop()
+  // }
+  //
+  // goToPeoples(navigator){
+  //   navigator.push({
+  //     name: 'Peoples'
+  //   })
+  // }
+
   render() {
     return (
-      <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
-        <View>
-          <Header searchKey={this.state.searchKey} handleChange={this.handleChange}/>
-          <News news={this.state.news.filter((eachNews) => (eachNews.title === null ? '' : eachNews.title).match(new RegExp(this.state.searchKey, 'i')))}/>
-        </View>
-      </TouchableWithoutFeedback>
+      <View>
+        <Header searchKey={this.state.searchKey} handleChange={this.handleChange}/>
+        <Navigator
+          initialRoute={{ name: 'News', title: 'To People' }}
+          renderScene={(route, navigator) => {
+            switch (route.name) {
+              case 'News': return (
+                <News
+                  news={this.state.news.filter((eachNews) => (eachNews.title === null ? '' : eachNews.title).match(new RegExp(this.state.searchKey, 'i')))}
+                  sceneTitle={route.title}
+                  navigator={navigator}
+                />
+              )
+              case 'Peoples': return (
+                <Peoples
+                  peoples={this.state.peoples}
+                  sceneTitle={route.title}
+                  navigator={navigator}
+                />
+              )
+              default: return (
+                <News
+                  news={this.state.news.filter((eachNews) => (eachNews.title === null ? '' : eachNews.title).match(new RegExp(this.state.searchKey, 'i')))}
+                  sceneTitle={route.title}
+                  navigator={navigator}
+                />
+              )
+            }
+          }}
+        />
+      </View>
     )
   }
 }

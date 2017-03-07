@@ -5,8 +5,7 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
-  Button
+  StyleSheet
 } from 'react-native'
 
 const Header = (props) => {
@@ -29,7 +28,7 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
   header: {
-    flex: 0.2,
+    flex: 0.17,
     backgroundColor: 'steelblue',
     paddingTop: 20
   },
@@ -37,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+    fontWeight: 'bold'
   },
   searchInput: {
     height: 37,

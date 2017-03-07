@@ -4,14 +4,22 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Button
 } from 'react-native'
 
 const News = (props) => {
   return (
     <View style={styles.news}>
+      <Button
+        title={props.sceneTitle}
+        onPress={() => props.navigator.push({
+          name: 'Peoples',
+          title: 'To News'
+        })}
+      />
       <Text style={styles.title}>News</Text>
-      <ScrollView>
+      <ScrollView style={styles.scroll}>
         {props.news.map((item, index) => {
            return (
              <Text style={styles.list} key={index}>
@@ -25,6 +33,13 @@ const News = (props) => {
 }
 
 const styles = StyleSheet.create({
+  scroll:{
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    backgroundColor: '#ccffee',
+    borderRadius: 5
+  },
   news: {
     flex: 0.8,
     backgroundColor: 'skyblue'
@@ -33,9 +48,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    margin: 20
+    marginBottom: 20
   },
   list: {
+    padding: 3,
     marginLeft: 20,
     marginRight: 20,
     color: '#333333',

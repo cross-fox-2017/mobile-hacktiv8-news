@@ -20,26 +20,30 @@ export default class Hacktiv8News extends Component {
   constructor () {
     super()
     this.state = {
-      datas: [
-          {
-              title: 'How Indonesia Responds to the Looming US Fed Funds Rate Hike',
-          }, {
-              title: 'Royal Bank of Scotland NV Ends Business Activities in Indonesia',
-          }, {
-              title: 'Accel leads $10 million round in agri-tech startup',
-          }, {
-              title: 'Samsung Galaxy S8 market launch delayed by a week',
-          }, {
-              title: 'Trai proposes Net at 2p per MB by easing access to Wi-Fi',
-          }
-      ],
+      datas: [],
       searchKeyword: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
 
   }
+  componentWillMount() {
+    console.log('will');
+    const appThis = this
+    fetch('http://hn.algolia.com/api/v1/search?query=react')
+    .then(function(res) {
+      return res.json();
+    })
+    .then(function(data) {
+    // console.log(data);
+    setTimeout(() => {
+      appThis.setState({
+      datas: data.hits
+    })}, 0)
 
+
+    });
+  }
   handleChange (e) {
     console.log(e.nativeEvent.text);
     console.log(this.state.searchKeyword);

@@ -8,10 +8,10 @@ import {
   View
 } from 'react-native';
 
-export const List = (props) => {
+const showList = (news) => {
   return (<View>
     {
-      props.datas.map((data, index) => {
+      news.datas.map((data, index) => {
         return(
           <Text style={styles.newslist} key={index}>
             {data.title}
@@ -22,6 +22,23 @@ export const List = (props) => {
   </View>
 )
 }
+
+const emptyList = () => {
+  return (<Text>Loading...</Text>)
+}
+
+export const List = (props) => {
+  console.log(props.datas.length);
+  return (
+    props.datas.length > 0 ? showList(props) : emptyList()
+
+  )
+}
+
+
+
+
+
 
 const styles = StyleSheet.create({
   newslist:{

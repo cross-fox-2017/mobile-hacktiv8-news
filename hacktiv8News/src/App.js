@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 
 import {
   View,
-  Text
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from 'react-native'
 
 import { Header, Content } from './components'
@@ -10,10 +12,12 @@ import { Header, Content } from './components'
 class App extends Component {
   render() {
     return (
-      <View>
-        <Header />
-        <Content />
-      </View>
+      <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss()}>
+        <View>
+          <Header />
+          <Content />
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 }

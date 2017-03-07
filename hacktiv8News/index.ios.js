@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './src/logo.svg'
-// import './src/App.css'
 import {
   AppRegistry,
   StyleSheet,
@@ -23,9 +21,8 @@ export default class hacktiv8News extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#F5FCFF',
   }
 });
 

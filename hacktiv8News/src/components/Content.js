@@ -25,13 +25,12 @@ class Content extends Component {
 const styles = StyleSheet.create({
   contents: {
     flex: 0.8,
-    backgroundColor: 'skyblue',
-
+    backgroundColor: 'skyblue'
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 5
   }
 })
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from '../ios/styles/index.styles.ios.js'
 
-import Header from './components/Header'
 import {
-  AppRegistry,
   Alert,
   Text,
   ScrollView,
@@ -13,21 +11,18 @@ import {
   View
 } from 'react-native';
 
-const nextScene = () => {
-  Alert.alert('belum bro')
-}
 
-export default class App extends React.Component {
-  constructor(){
-    super()
-      this.state = {
-        search: '',
-        news: [
-          { id: 1, title: 'Harga Beras Hari Ini', prev: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore' },
-          { id: 2, title: 'Persiapan Cagub Jelang Putaran kedua', prev: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' },
-          { id: 3, title: 'Profil CEO KumpulBerbagi', prev: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore' },
-          { id: 4, title: 'Hacktiv8 Membuka Cabang di USA', prev: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' },
-        ],
+export default class NewsScene extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      search: '',
+      news: [
+        { id: 1, title: 'Harga Beras Hari Ini', prev: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore' },
+        { id: 2, title: 'Persiapan Cagub Jelang Putaran kedua', prev: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' },
+        { id: 3, title: 'Profil CEO KumpulBerbagi', prev: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore' },
+        { id: 4, title: 'Hacktiv8 Membuka Cabang di USA', prev: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum' },
+      ],
     }
   }
 
@@ -75,38 +70,12 @@ export default class App extends React.Component {
       </ScrollView>
 
       <Button
-        onPress={nextScene}
+        onPress={this.props.toPeopleScene}
         title="Next Page"
         color="#841584"
         backgroundColor="#6b6b6b"
       />
-
-    {/* <Navigator
-      initialRoute={{ page: 'News', index: 0 }}
-      renderScene={(route, navigator) => {
-        return <
-      }}
-    /> */}
-
-
       </View>
     )
   }
 }
-
-{/* <Navigator
-initialRoute={{ page: 'News', index: 0 }}
-renderScene={(route, navigator) => {
-  return <
-}}
-/> */}
-
-
-{/* <ScrollView horizontal={true} className="category" style={styles.category}>
-<Text style={styles.categoryText}>
-Top News
-</Text>
-<Text style={styles.categoryText}>
-People
-</Text>
-</ScrollView> */}

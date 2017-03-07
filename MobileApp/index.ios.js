@@ -16,7 +16,7 @@ import { styles } from './styles/styles'
 export default class MobileApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <App />
       </View>
     );

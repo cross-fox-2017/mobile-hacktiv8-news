@@ -8,25 +8,28 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
   },
   header: {
-    flex: 1,
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 30,
-    backgroundColor: '#1E8BC3',
+    marginTop: 20,
+    backgroundColor: '#BAD455',
     height: deviceHeight * 0.2,
-    flexDirection: 'column',
-    width: deviceWidth,
-    paddingTop: 30,
+    alignItems : 'center',
     justifyContent: 'center',
-    alignItems: 'center',
   },
   filter: {
-    fontSize: 20,
   },
   list: {
-    fontSize: 20,
+    height: deviceHeight * 0.6,
+    backgroundColor: '#52B3D9',
+  },
+  textInput: {
+    backgroundColor: '#C5EFF7',
+    height: 20,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+  textList: {
+    fontSize: 12,
+    textAlign: 'center',
   }
 });

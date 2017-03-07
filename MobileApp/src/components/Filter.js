@@ -5,7 +5,7 @@ import { styles } from '../../styles/styles'
 export const Filter = () => {
   return (
     <View style={styles.filter}>
-      <TextInput placeholder="Search"/>
+      <TextInput placeholder="Search" style={styles.textInput}/>
     </View>
   )
 }

@@ -1,11 +1,14 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, ListView } from 'react-native'
 import { styles } from '../../styles/styles'
 
-export const List = () => {
+export const List = (props) => {
   return (
-    <Text style={styles.list}>
-      Welcome to Syanmil React Native!
-    </Text>
+    <View style={styles.list}>
+      {props.data.map((item, index) => {
+        return <Text style={styles.textList} key={index}>{item.title}</Text>
+        })
+      }
+    </View>
   )
 }

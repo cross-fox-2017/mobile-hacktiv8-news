@@ -1,6 +1,7 @@
 import React from 'react'
 import { Header, Filter, List } from './components'
 import { View } from 'react-native'
+import { styles } from '../styles/styles'
 
 export class App extends React.Component {
   constructor(){

@@ -1,12 +1,16 @@
+import {Header} from './Header'
+import {NewsForm} from './NewsForm'
+import {NewsList} from './NewsList'
+
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
+  Button,
   View
 } from 'react-native';
 
-import { Header,NewsForm,NewsList} from './components'
 
 class App extends Component {
   constructor(){
@@ -51,6 +55,13 @@ class App extends Component {
       <Header />
       <NewsForm handleChange= {this.handleChange.bind(this)}/>
       <NewsList links={this.state.link.filter((x)=>{return (x.title===null ? '':x.title).match(new RegExp(this.state.searchLink,'i'))})}/>
+      <Button
+      onPress={() => {
+        this.props.navigator.push({
+          name:'people'
+        })
+      }}
+      title="go to people" color="green"/>
       </View>
 
     )

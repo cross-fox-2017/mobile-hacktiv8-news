@@ -8,10 +8,10 @@ import {
   View
 } from 'react-native';
 
-const showList = (news) => {
+const showList = (props) => {
   return (<View>
     {
-      news.datas.map((data, index) => {
+      props.datas.map((data, index) => {
         return(
           <Text style={styles.newslist} key={index}>
             {data.title}
@@ -25,7 +25,7 @@ const showList = (news) => {
 
 const emptyList = () => {
   return (          <Image 
-            style={styles.newspaper} 
+            style={styles.loadingAnimation} 
             source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif'}}
           />)
 }
@@ -46,10 +46,11 @@ export const List = (props) => {
 const styles = StyleSheet.create({
   newslist:{
     textAlign: 'center',
-    fontSize:8,
+    fontFamily: 'Cochin',
+    fontSize:9,
     marginTop: 10,
   },
-    newspaper: {
+    loadingAnimation: {
     width: 40, 
     height: 40
   },

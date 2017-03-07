@@ -1,120 +1,50 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {List} from './components/List'
-import {Search} from './components/Search'
+import NewsScene from './components/News'
+import PeopleScene from './components/People'
+
 import {
   AppRegistry,
   StyleSheet,
   Text,
   TextInput,
-  Image,
+  Navigator,
   View
 } from 'react-native';
 
 export default class Hacktiv8News extends Component {
-  constructor () {
+    constructor () {
     super()
     this.state = {
-      datas: [],
-      searchKeyword: '',
+ 
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    // this.nextScene = this.nextScene.bind(this);
 
   }
-  componentWillMount() {
-    console.log('will');
-    const appThis = this
-    fetch('http://hn.algolia.com/api/v1/search?query=react')
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-    // console.log(data);
-    setTimeout(() => {
-      appThis.setState({
-      datas: data.hits
-    })}, 0)
-
-
-    });
+  renderNewScene (route, navigator) {
+    console.log(this)
+    if (route.index === 0) {
+      
+      return (
+        <NewsScene route={route} navigator={navigator} />
+      )  
+    } else if (route.index === 1) {
+      return (
+        <PeopleScene route={route} navigator={navigator} />)
+    }
+    
   }
-  handleChange (e) {
-    console.log(e.nativeEvent.text);
-    console.log(this.state.searchKeyword);
-    this.setState({
-      searchKeyword: e.nativeEvent.text
-    });
-  }
-
   render() {
+    const appThis = this
     return (
-      <View style={styles.container}>
+      <Navigator
 
-        <View style={styles.header}>
-          <Text style={styles.welcome}>
-            Hacktiv8 News!
-          </Text>
-          <Image 
-            style={styles.newspaper} 
-            source={{uri: 'https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Newspaper_news_rss_vector_paper_symbol_simple.png'}}
-          />
-          <Text style={styles.instructions}>
-            Search
-          </Text>
-          <View style={styles.searchForm}>
-            <Search style={styles.searchInput} handleChange={this.handleChange}/>
-          </View>
-
-        </View>
-
-        <View >
-          <List datas={this.state.datas.filter(data => {
-              return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
-            })
-          } />
-        </View>
-
-      </View>
-    );
+        initialRoute={{ title: 'News Scene', index: 0 }}
+        renderScene={appThis.renderNewScene}
+      />
+    )
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: 'white',
-  },
-  header: {
-    backgroundColor: '#FFC107',
-    flexDirection: 'column',
-    width: '100%',
-    paddingTop: 20,
-    paddingBottom: 20,
-    alignItems: 'center'
-  },
-  searchForm:{
-    width:'50%',
-  },
-  newspaper: {
-    width: 40, 
-    height: 40
-  },
-  welcome: {
-    fontWeight:'bold',
-    fontSize: 20,
-    margin: 10,
-  },
-  instructions: {
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+}
 
 AppRegistry.registerComponent('Hacktiv8News', () => Hacktiv8News);

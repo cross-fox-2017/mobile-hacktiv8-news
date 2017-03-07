@@ -2,10 +2,13 @@ import React from 'react'
 import { View, TextInput } from 'react-native'
 import { styles } from '../../styles/styles'
 
-export const Filter = () => {
+export const Filter = (props) => {
   return (
     <View style={styles.filter}>
-      <TextInput placeholder="Search" style={styles.textInput}/>
+      <TextInput
+        placeholder="Search"
+        style={styles.textInput}
+        onChangeText={e => props.handleChange(e) }/>
     </View>
   )
 }

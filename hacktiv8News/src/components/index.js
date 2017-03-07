@@ -1,4 +1,5 @@
-import Content from './Content';
 import Header from './Header';
+import News from './News';
+import Peoples from './Peoples';
 
-export { Content, Header };
+export { Header, News, Peoples };

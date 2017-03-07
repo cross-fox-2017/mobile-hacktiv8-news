@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
+  View,
+  StyleSheet
 } from 'react-native';
 
 import App from './src/App'

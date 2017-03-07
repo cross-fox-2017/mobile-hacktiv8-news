@@ -5,8 +5,8 @@ import { styles } from '../../styles/styles'
 export const Header = () => {
   return (
     <View style={styles.header}>
-      <Text>
-        Welcome to Syanmil React Native News!
+      <Text style={styles.headerText}>
+        Syanmil News and People!
       </Text>
     </View>
   )

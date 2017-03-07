@@ -6,7 +6,7 @@ export const Filter = (props) => {
   return (
     <View style={styles.filter}>
       <TextInput
-        placeholder="Search"
+        placeholder=" Search Your News Here..."
         style={styles.textInput}
         onChangeText={e => props.handleChange(e) }/>
     </View>

@@ -1,61 +1,48 @@
 import React from 'react'
-import { Header, Filter, List } from './components'
-import { View } from 'react-native'
+import { News } from './News'
+import { People } from './People'
 import { styles } from '../styles/styles'
+import { Navigator, View, Text } from 'react-native'
 
 export class App extends React.Component {
   constructor(){
     super()
-    this.state = {
-      data: [
-        {
-          title: 'React',
-          url: 'https://facebook.github.io/react/',
-          author: 'Jordan Walke',
-          objectID: 0
-        },
-        {
-          title: 'Redux',
-          url: 'https://github.com/reactjs/redux',
-          author: 'Dan Abramov, Andrew Clark',
-          objectID: 1
-        }
-      ],
-      search: ''
+    this.sceneRender = this.sceneRender.bind(this)
+  }
+  sceneRender(route, navigator){
+    switch (route.scene) {
+      case 'news':
+      console.log(this);
+        return (<News
+          scene={route.scene}
+          goToPeople={() => this.goToPeople(navigator)}/>)
+      case 'people':
+        return (<People
+          scene={route.scene}
+          goToNews={() => this.goToNews(navigator)}/>)
+      default:
+        return <News />
     }
   }
-  handleChange(text){
-    this.setState({
-      search: text
+  goToPeople(navigator){
+    navigator.push({
+      scene: 'people'
     })
-    this.letFetch()
   }
-  cekSearch(item){
-    let cut = new RegExp(`${this.state.search}`, 'i')
-    return cut.test(item)
-  }
-  letFetch(){
-    let uri = encodeURI(this.state.search)
-    fetch(`https://hn.algolia.com/api/v1/search?query=${uri}`)
-      .then(function(response) {
-        return response.json()
-      })
-      .then(data =>{
-        this.setState({
-          data : data.hits
-        })
-      })
-      .catch(function(err){
-        throw err
-      })
+  goToNews(navigator){
+    navigator.push({
+      scene: 'news'
+    })
   }
   render(){
     return (
-      <View>
-        <Header />
-        <Filter handleChange={this.handleChange.bind(this)}/>
-        <List data={this.state.data}/>
+      <View style={{height: '100%', width: '100%'}}>
+        <Navigator
+          initialRoute= {{scene: 'news'}}
+          renderScene= {this.sceneRender}
+          />
       </View>
+
     )
   }
 }

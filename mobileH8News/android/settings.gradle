@@ -1,0 +1,3 @@
+rootProject.name = 'mobileH8News'
+
+include ':app'

@@ -24,8 +24,8 @@ const showList = (props) => {
 }
 
 const emptyList = () => {
-  return (          <Image 
-            style={styles.loadingAnimation} 
+  return (          <Image
+            style={styles.loadingAnimation}
             source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif'}}
           />)
 }
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
     loadingAnimation: {
-    width: 40, 
+    width: 40,
     height: 40
   },
 

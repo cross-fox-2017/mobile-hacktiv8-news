@@ -1,9 +1,7 @@
 import React from 'react'
 import {
-  AppRegistry,
   StyleSheet,
   TextInput,
-  Text,
   View
 } from 'react-native';
 

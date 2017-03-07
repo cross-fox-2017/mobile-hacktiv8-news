@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
   Image,
-  Navigator,  
+  Navigator,
   Button,
   View
 } from 'react-native';
@@ -18,11 +18,11 @@ export default class PeopleScene extends Component {
     this.state = {
       datas: [
       {title: 'Abraham Lincoln'},
-      {title: 'Jhon F. Kennedy'},      
-      {title: 'Jon Stewart'},      
-      {title: 'Alfred Hepburn'},      
-      {title: 'Barrack Obama'},      
-      {title: 'David Beckham'},      
+      {title: 'Jhon F. Kennedy'},
+      {title: 'Jon Stewart'},
+      {title: 'Alfred Hepburn'},
+      {title: 'Barrack Obama'},
+      {title: 'David Beckham'},
       {title: 'Albert Einstein'},
       ],
       searchKeyword: '',
@@ -31,7 +31,7 @@ export default class PeopleScene extends Component {
     this.handleChange = this.handleChange.bind(this);
 
   }
-  
+
   handleChange (e) {
     this.setState({
       searchKeyword: e.nativeEvent.text
@@ -46,9 +46,9 @@ export default class PeopleScene extends Component {
           <Text style={styles.welcome}>
             People List
           </Text>
-          <Image 
-            style={styles.newspaper} 
-            source={{uri: 'https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Newspaper_news_rss_vector_paper_symbol_simple.png'}}
+          <Image
+            style={styles.newspaper}
+            source={{uri: 'https://image.flaticon.com/icons/png/512/46/46799.png'}}
           />
           <Text style={styles.instructions}>
             Search
@@ -60,22 +60,16 @@ export default class PeopleScene extends Component {
         </View>
 
         <View >
+          <Button style={styles.buttonNavigator}
+              onPress={() => {this.props.navigator.pop()}}
+              title="Go to Hacktiv8 News"
+              color="teal"
+          />
           <List datas={this.state.datas.filter(data => {
               return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
             })
           } />
         </View>
-        <Button
-            onPress={() => {
-              this.props.navigator.pop({
-                title: 'People Scene',
-                index: 1
-              })
-            }}
-            title="Go to Hacktiv8 News"
-            color="red"
-            
-        />
       </View>
     );
   }
@@ -99,17 +93,24 @@ const styles = StyleSheet.create({
     width:'50%',
   },
   newspaper: {
-    width: 40, 
+    width: 40,
     height: 40
   },
   welcome: {
     fontWeight:'bold',
+    color:'white',
     fontFamily: 'Cochin',
     fontSize: 20,
     margin: 10,
   },
   instructions: {
-    color: '#333333',
+    color:'white',
+    marginBottom: 5,
+    fontFamily: 'Cochin',
+  },
+  buttonNavigator: {
+    color: 'red',
+    fontSize: 15,
     marginBottom: 5,
     fontFamily: 'Cochin',
   },

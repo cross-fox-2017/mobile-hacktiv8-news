@@ -7,7 +7,7 @@ import {
   Text,
   TextInput,
   Image,
-  Navigator,  
+  Navigator,
   Button,
   View
 } from 'react-native';
@@ -19,24 +19,19 @@ export default class NewsScene extends Component {
       datas: [],
       searchKeyword: '',
     }
-
     this.handleChange = this.handleChange.bind(this);
-
   }
   componentWillMount() {
-    console.log('will');
     const appThis = this
     fetch('http://hn.algolia.com/api/v1/search?query=react')
     .then(function(res) {
       return res.json();
     })
     .then(function(data) {
-    setTimeout(() => {
-      appThis.setState({
-      datas: data.hits
-    })}, 0)
-
-
+      setTimeout(() => {
+        appThis.setState({
+        datas: data.hits
+      })}, 0)
     });
   }
   handleChange (e) {
@@ -53,24 +48,17 @@ export default class NewsScene extends Component {
           <Text style={styles.welcome}>
             Hacktiv8 News!
           </Text>
-          <Image 
-            style={styles.newspaper} 
+          <Image
+            style={styles.newspaper}
             source={{uri: 'https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/Newspaper_news_rss_vector_paper_symbol_simple.png'}}
           />
           <Text style={styles.instructions}>
             Search
           </Text>
           <View style={styles.searchForm}>
-            <Search style={styles.searchInput} handleChange={this.handleChange}/>
+            <Search  handleChange={this.handleChange}/>
           </View>
 
-        </View>
-
-        <View >
-          <List datas={this.state.datas.filter(data => {
-              return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
-            })
-          } />
         </View>
         <Button
             onPress={() => {
@@ -80,9 +68,14 @@ export default class NewsScene extends Component {
               })
             }}
             title="Go to People List"
-            color="red"
-            
+            color="teal"
         />
+        <View >
+          <List datas={this.state.datas.filter(data => {
+              return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
+            })
+          } />
+        </View>
       </View>
     );
   }
@@ -95,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   header: {
-    backgroundColor: '#FFC107',
+    backgroundColor: '#2196F3',
     flexDirection: 'column',
     width: '100%',
     paddingTop: 20,
@@ -106,17 +99,18 @@ const styles = StyleSheet.create({
     width:'50%',
   },
   newspaper: {
-    width: 40, 
+    width: 40,
     height: 40
   },
   welcome: {
+    color:'white',
     fontWeight:'bold',
     fontFamily: 'Cochin',
     fontSize: 20,
     margin: 10,
   },
   instructions: {
-    color: '#333333',
+    color: 'white',
     marginBottom: 5,
     fontFamily: 'Cochin',
   },

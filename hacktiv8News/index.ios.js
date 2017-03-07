@@ -1,53 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
+  Navigator,
 } from 'react-native';
 
+import News from './components/News'
+import People from './components/People'
+
 export default class hacktiv8News extends Component {
+
+  goToPeople(navigator) {
+    navigator.push({
+      name: 'people',
+      title: 'Hacktiv8 People',
+    });
+  }
+
+  goToNews(navigator) {
+    navigator.push({
+      name: 'news',
+      title: 'Hacktiv8 News',
+    });
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+      <Navigator
+        initialRoute={{ name: 'news', title: 'Hacktiv8 News', index: 0 }}
+        renderScene={(route, navigator) => {
+          switch(route.name) {
+            case 'news': return <News navigator={navigator} goToPeople={() => this.goToPeople(navigator)}/>
+            case 'people': return <People navigator={navigator} goToNews={() => this.goToNews(navigator)} />
+            default: return <News />
+          }
+        }}
+      />
+    )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('hacktiv8News', () => hacktiv8News);

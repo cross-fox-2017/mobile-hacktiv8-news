@@ -15,7 +15,7 @@ const NewsList = props => {
     <ScrollView>
       { props.newsList
           .filter(item => new RegExp(props.currentSearch, 'i').test(item.title))
-          .map(item => <Text style={styles.newsList}>{item.title}</Text>)
+          .map((item, index) => <Text key={index} style={styles.newsList}>{item.title}</Text>)
       }
     </ScrollView>
   )

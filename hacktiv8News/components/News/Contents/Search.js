@@ -44,7 +44,6 @@ class Search extends Component {
             onChangeText={
               text => {
                 this.setState({currentSearch: text})
-                console.log(this.state);
               }
             }
           />
@@ -60,12 +59,14 @@ const width = Dimensions.get('window').width
 const styles = StyleSheet.create({
   search: {
     padding: 10,
-    backgroundColor: 'whitesmoke',
     width: width,
   },
   input: {
     height: 50,
-    color: 'black'
+    borderColor: 'royalblue',
+    borderWidth: 1,
+    padding: 10,
+    margin: 15
   }
 });
 

@@ -23,14 +23,18 @@ export default class hacktiv8News extends Component {
     });
   }
 
+  back(navigator) {
+    navigator.pop()
+  }
+
   render() {
     return (
       <Navigator
         initialRoute={{ name: 'news', title: 'Hacktiv8 News', index: 0 }}
         renderScene={(route, navigator) => {
           switch(route.name) {
-            case 'news': return <News navigator={navigator} goToPeople={() => this.goToPeople(navigator)}/>
-            case 'people': return <People navigator={navigator} goToNews={() => this.goToNews(navigator)} />
+            case 'news': return <News navigator={navigator} back={() => this.back(navigator)} goToPeople={() => this.goToPeople(navigator)}/>
+            case 'people': return <People navigator={navigator} back={() => this.back(navigator)} goToNews={() => this.goToNews(navigator)} />
             default: return <News />
           }
         }}

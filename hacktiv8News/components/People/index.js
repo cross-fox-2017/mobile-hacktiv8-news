@@ -16,6 +16,7 @@ export default class News extends Component {
     return (
       <View style={styles.container}>
         <Header />
+        <Button onPress={this.props.back} title="back" />
         <Button onPress={this.props.goToNews} title="news" />
         <Contents />
         <Footer />

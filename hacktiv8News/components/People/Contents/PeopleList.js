@@ -10,7 +10,7 @@ const PeopleList = props => {
   return (
     <ScrollView>
       { props.peopleList
-          .map(item => <Text style={styles.peopleList}>{item.name}</Text>)
+          .map((item, index) => <Text key={index} style={styles.peopleList}>{item.name}</Text>)
       }
     </ScrollView>
   )

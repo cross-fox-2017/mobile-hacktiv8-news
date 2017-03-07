@@ -44,15 +44,6 @@ export default class NewsScene extends React.Component {
           <TextInput style={styles.textInput} placeholder="search news here .. " onChange={this.search.bind(this)} value={this.state.search}/>
         </View>
 
-        {/* <ScrollView horizontal={true} className="category" style={styles.category}>
-          <Text style={styles.categoryText}>
-            Top News
-          </Text>
-          <Text style={styles.categoryText}>
-            People
-          </Text>
-        </ScrollView> */}
-
       <ScrollView>
         { this.state.news
             .filter( result => (result.title === null ? '' : result.title)

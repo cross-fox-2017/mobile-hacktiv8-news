@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {List} from './List'
 import {Search} from './Search'
+import { Button } from 'native-base';
 import {
   AppRegistry,
   StyleSheet,
@@ -8,7 +9,6 @@ import {
   TextInput,
   Image,
   Navigator,
-  Button,
   View
 } from 'react-native';
 
@@ -54,11 +54,13 @@ export default class PeopleScene extends Component {
             <Search style={styles.searchInput} handleChange={this.handleChange}/>
           </View>
         </View>
-        <Button style={styles.buttonNavigator}
-          onPress={() => {this.props.navigator.pop()}}
-          title="Go to Hacktiv8 News"
-          color="teal"
-        />
+
+        <Button small warning full onPress={() => {
+            this.props.navigator.pop()
+          }}>
+          <Text>Go to Hacktiv8 News</Text>
+        </Button>
+
         <View >
           <List datas={this.state.datas.filter(data => {
               return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1

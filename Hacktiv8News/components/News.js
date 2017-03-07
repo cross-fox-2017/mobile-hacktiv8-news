@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {List} from './List'
 import {Search} from './Search'
+import { Button } from 'native-base';
 import {
   AppRegistry,
   StyleSheet,
@@ -9,7 +10,7 @@ import {
   Image,
   Navigator,
   ScrollView,
-  Button,
+  // Button,
   View
 } from 'react-native';
 
@@ -24,7 +25,7 @@ export default class NewsScene extends Component {
   }
   componentWillMount() {
     const appThis = this
-    fetch('http://hn.algolia.com/api/v1/search?query=javascript')
+    fetch('http://hn.algolia.com/api/v1/search?query=react')
     .then(function(res) {
       return res.json();
     })
@@ -59,16 +60,14 @@ export default class NewsScene extends Component {
             <Search  handleChange={this.handleChange}/>
           </View>
         </View>
-        <Button
-          onPress={() => {
+        <Button small info full onPress={() => {
             this.props.navigator.push({
               title: 'People Scene',
               index: 1
             })
-          }}
-          title="Go to People List"
-          color="teal"
-        />
+          }}>
+          <Text>Go to People List</Text>
+        </Button>
         <ScrollView >
           <List datas={this.state.datas.filter(data => {
               return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1

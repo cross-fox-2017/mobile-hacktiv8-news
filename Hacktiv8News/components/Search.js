@@ -16,9 +16,9 @@ export const Search = (props) => {
 const styles = StyleSheet.create({
 searchInput:{
     width: '100%',
-    height: 20, 
+    height: 20,
     backgroundColor:'white',
-    borderColor: 'black', 
+    borderColor: 'black',
     borderWidth: 1,
     textAlign: 'center',
     fontSize:10,

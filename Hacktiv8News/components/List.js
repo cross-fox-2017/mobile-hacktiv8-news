@@ -24,7 +24,10 @@ const showList = (news) => {
 }
 
 const emptyList = () => {
-  return (<Text>Loading...</Text>)
+  return (          <Image 
+            style={styles.newspaper} 
+            source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif'}}
+          />)
 }
 
 export const List = (props) => {
@@ -45,6 +48,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize:8,
     marginTop: 10,
+  },
+    newspaper: {
+    width: 40, 
+    height: 40
   },
 
 });

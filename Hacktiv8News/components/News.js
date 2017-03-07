@@ -8,6 +8,7 @@ import {
   TextInput,
   Image,
   Navigator,
+  ScrollView,
   Button,
   View
 } from 'react-native';
@@ -68,12 +69,12 @@ export default class NewsScene extends Component {
           title="Go to People List"
           color="teal"
         />
-        <View >
+        <ScrollView >
           <List datas={this.state.datas.filter(data => {
               return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
             })
           } />
-        </View>
+        </ScrollView>
       </View>
     );
   }

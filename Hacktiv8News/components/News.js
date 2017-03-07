@@ -23,7 +23,7 @@ export default class NewsScene extends Component {
   }
   componentWillMount() {
     const appThis = this
-    fetch('http://hn.algolia.com/api/v1/search?query=react')
+    fetch('http://hn.algolia.com/api/v1/search?query=javascript')
     .then(function(res) {
       return res.json();
     })
@@ -39,7 +39,6 @@ export default class NewsScene extends Component {
       searchKeyword: e.nativeEvent.text
     });
   }
-
   render() {
     return (
       <View style={styles.container}>
@@ -58,17 +57,16 @@ export default class NewsScene extends Component {
           <View style={styles.searchForm}>
             <Search  handleChange={this.handleChange}/>
           </View>
-
         </View>
         <Button
-            onPress={() => {
-              this.props.navigator.push({
-                title: 'People Scene',
-                index: 1
-              })
-            }}
-            title="Go to People List"
-            color="teal"
+          onPress={() => {
+            this.props.navigator.push({
+              title: 'People Scene',
+              index: 1
+            })
+          }}
+          title="Go to People List"
+          color="teal"
         />
         <View >
           <List datas={this.state.datas.filter(data => {
@@ -97,7 +95,6 @@ const styles = StyleSheet.create({
   },
   searchForm:{
     width:'50%',
-
   },
   newspaper: {
     width: 40,

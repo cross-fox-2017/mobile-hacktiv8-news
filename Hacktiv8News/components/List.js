@@ -20,28 +20,24 @@ const showList = (props) => {
       })
     }
   </View>
-)
+  )
 }
 
 const emptyList = () => {
-  return (          <Image
-            style={styles.loadingAnimation}
-            source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif'}}
-          />)
+  return (
+    <Image
+      style={styles.loadingAnimation}
+      source={{uri: 'https://s-media-cache-ak0.pinimg.com/originals/0c/44/da/0c44dacf1b038014a6f941131c5e8aa2.gif'}}
+    />
+  )
 }
 
 export const List = (props) => {
   console.log(props.datas.length);
   return (
     props.datas.length > 0 ? showList(props) : emptyList()
-
   )
 }
-
-
-
-
-
 
 const styles = StyleSheet.create({
   newslist:{
@@ -54,5 +50,4 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40
   },
-
 });

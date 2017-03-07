@@ -22,6 +22,5 @@ searchInput:{
     borderWidth: 1,
     textAlign: 'center',
     fontSize:10,
-
   },
 })

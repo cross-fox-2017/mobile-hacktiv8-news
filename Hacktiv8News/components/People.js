@@ -27,9 +27,7 @@ export default class PeopleScene extends Component {
       ],
       searchKeyword: '',
     }
-
     this.handleChange = this.handleChange.bind(this);
-
   }
 
   handleChange (e) {
@@ -37,7 +35,6 @@ export default class PeopleScene extends Component {
       searchKeyword: e.nativeEvent.text
     });
   }
-
   render() {
     return (
       <View style={styles.container}>
@@ -56,15 +53,13 @@ export default class PeopleScene extends Component {
           <View style={styles.searchForm}>
             <Search style={styles.searchInput} handleChange={this.handleChange}/>
           </View>
-
         </View>
-
+        <Button style={styles.buttonNavigator}
+          onPress={() => {this.props.navigator.pop()}}
+          title="Go to Hacktiv8 News"
+          color="teal"
+        />
         <View >
-          <Button style={styles.buttonNavigator}
-              onPress={() => {this.props.navigator.pop()}}
-              title="Go to Hacktiv8 News"
-              color="teal"
-          />
           <List datas={this.state.datas.filter(data => {
               return data.title.toLowerCase().indexOf(this.state.searchKeyword.toLowerCase()) !== -1
             })
@@ -74,7 +69,6 @@ export default class PeopleScene extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

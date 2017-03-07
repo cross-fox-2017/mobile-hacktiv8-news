@@ -8,7 +8,7 @@ import {
 export const Search = (props) => {
   return (
     <View>
-      <TextInput style={styles.searchInput} onChange={props.handleChange} />
+      <TextInput style={styles.searchInput} placeholder='input keyword...' onChange={props.handleChange} />
     </View>
   )
 }
@@ -22,5 +22,6 @@ searchInput:{
     borderWidth: 1,
     textAlign: 'center',
     fontSize:10,
+
   },
 })

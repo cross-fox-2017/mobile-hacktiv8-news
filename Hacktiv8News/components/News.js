@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   },
   searchForm:{
     width:'50%',
+
   },
   newspaper: {
     width: 40,

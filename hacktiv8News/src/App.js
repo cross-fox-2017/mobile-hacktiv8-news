@@ -12,8 +12,8 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      news: newsDummy,
-      peoples: peopleDummy,
+      news: [],
+      peoples: [],
       searchKey: ''
     }
     this.handleChange = this.handleChange.bind(this);
@@ -23,11 +23,37 @@ class App extends Component {
     this.setState({
       searchKey: event.nativeEvent.text
     })
+    this.fetchNews(event.nativeEvent.text)
+    this.fetchPeoples(event.nativeEvent.text)
   }
 
-  filterRegex (eachNews) {
-    let x = new RegExp(this.state.searchKey, 'i')
-    return x.test(eachNews)
+  componentDidMount () {
+    this.fetchNews('')
+    this.fetchPeoples()
+  }
+
+  fetchNews (searchQuery) {
+    fetch(`https://hn.algolia.com/api/v1/search?query=${encodeURI(searchQuery)}`)
+      .then((response) => {
+        return response.json()
+      })
+      .then((resp) => {
+        this.setState({
+          news: resp.hits
+        })
+      })
+  }
+
+  fetchPeoples () {
+    fetch('https://swapi.co/api/people/')
+      .then((response) => {
+        return response.json()
+      })
+      .then((resp) => {
+        this.setState({
+          peoples: resp.results
+        })
+      })
   }
 
   // goToNews(navigator){
@@ -41,7 +67,6 @@ class App extends Component {
   // }
 
   render() {
-    console.log(this.state.searchKey);
     return (
       <View>
         <Header searchKey={this.state.searchKey} handleChange={this.handleChange}/>
@@ -59,7 +84,7 @@ class App extends Component {
               )
               case 'Peoples': return (
                 <Peoples
-                  peoples={this.state.peoples}
+                  peoples={this.state.peoples.filter((eachPeople) => (eachPeople.name === null ? '' : eachPeople.name).match(new RegExp(this.state.searchKey, 'i')))}
                   sceneTitle={route.title}
                   navigator={navigator}
                 />

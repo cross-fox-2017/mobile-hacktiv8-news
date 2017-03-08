@@ -18,8 +18,8 @@ const Header = (props) => {
         <TextInput
           style={styles.searchInput}
           placeholder="Search"
-          searchKey={props.searchKey}
-          handleChange={props.handleChange}
+          value={props.searchKey}
+          onChange={props.handleChange}
         />
       </View>
     </View>

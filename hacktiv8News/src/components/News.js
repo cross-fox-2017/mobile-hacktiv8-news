@@ -24,9 +24,12 @@ const News = (props) => {
       <ScrollView style={styles.scroll}>
         {props.news.map((item, index) => {
            return (
+             item.title !== null
+             ?
              <Text style={styles.list} key={index}>
                {item.title}
              </Text>
+             : false
            )
          })}
       </ScrollView>

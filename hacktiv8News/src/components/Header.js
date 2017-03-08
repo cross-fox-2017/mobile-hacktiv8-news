@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-const dismissKeyboard = require('dismissKeyboard')
 
 import {
   View,

@@ -25,6 +25,11 @@ class App extends Component {
     })
   }
 
+  filterRegex (eachNews) {
+    let x = new RegExp(this.state.searchKey, 'i')
+    return x.test(eachNews)
+  }
+
   // goToNews(navigator){
   //   navigator.pop()
   // }
@@ -36,6 +41,7 @@ class App extends Component {
   // }
 
   render() {
+    console.log(this.state.searchKey);
     return (
       <View>
         <Header searchKey={this.state.searchKey} handleChange={this.handleChange}/>
@@ -43,7 +49,8 @@ class App extends Component {
           initialRoute={{ name: 'News', title: 'To People' }}
           renderScene={(route, navigator) => {
             switch (route.name) {
-              case 'News': return (
+              case 'News':
+              return (
                 <News
                   news={this.state.news.filter((eachNews) => (eachNews.title === null ? '' : eachNews.title).match(new RegExp(this.state.searchKey, 'i')))}
                   sceneTitle={route.title}

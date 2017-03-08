@@ -11,10 +11,12 @@ import {
 const Peoples = (props) => {
   return (
     <View style={styles.peoples}>
-      <Button
-        title={props.sceneTitle}
-        onPress={() => props.navigator.pop()}
-      />
+      <View style={{backgroundColor: '#daffb3'}}>
+        <Button
+          title={props.sceneTitle}
+          onPress={() => props.navigator.pop()}
+        />
+      </View>
       <Text style={styles.title}>Peoples</Text>
       <ScrollView style={styles.scroll}>
         {props.peoples.map((people, index) => {
@@ -45,7 +47,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20
+    marginTop: 5,
+    marginBottom: 15,
   },
   list: {
     padding: 3,

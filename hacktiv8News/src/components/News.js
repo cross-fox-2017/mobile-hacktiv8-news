@@ -11,13 +11,15 @@ import {
 const News = (props) => {
   return (
     <View style={styles.news}>
-      <Button
-        title={props.sceneTitle}
-        onPress={() => props.navigator.push({
-          name: 'Peoples',
-          title: 'To News'
-        })}
-      />
+      <View style={{backgroundColor: '#daffb3'}}>
+        <Button
+          title={props.sceneTitle}
+          onPress={() => props.navigator.push({
+            name: 'Peoples',
+            title: 'To News'
+          })}
+        />
+      </View>
       <Text style={styles.title}>News</Text>
       <ScrollView style={styles.scroll}>
         {props.news.map((item, index) => {
@@ -48,7 +50,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20
+    marginTop: 5,
+    marginBottom: 15,
   },
   list: {
     padding: 3,

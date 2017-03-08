@@ -1,24 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
   Text,
+  Navigator,
   View
 } from 'react-native';
 
-import App from './src/App'
+import News from './src/components/news'
+import Peoples from './src/components/peoples'
+
+
 
 export default class projectNative extends Component {
+  renderNewScene (route, navigator) {
+
+    if (route.name === 'news') {
+
+      return (
+        <News route={route} navigator={navigator} />
+      )
+
+    } else if (route.name === 'people') {
+      return (
+        <Peoples route={route} navigator={navigator} />)
+    }
+
+  }
   render() {
+    const that = this
     return (
-      <App />
-    );
+
+      <Navigator
+        initialRoute ={{name:'news'}}
+        renderScene={that.renderNewScene}
+       />
+
+    )
   }
 }
 

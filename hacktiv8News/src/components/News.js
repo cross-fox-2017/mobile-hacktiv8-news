@@ -22,14 +22,13 @@ const News = (props) => {
       </View>
       <Text style={styles.title}>News</Text>
       <ScrollView style={styles.scroll}>
-        {props.news.map((item, index) => {
+        {props.news
+          .filter(item => item.title !== null && item.title !== '')
+          .map((item, index) => {
            return (
-             item.title !== null
-             ?
              <Text style={styles.list} key={index}>
                {item.title}
              </Text>
-             : false
            )
          })}
       </ScrollView>

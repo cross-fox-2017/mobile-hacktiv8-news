@@ -23,6 +23,9 @@ export default class People extends Component {
                 <Button onPress={() => this.props.navigator.push({page: 'news'})}
                   title="Go To News Page"
                 />
+              <Button onPress={() => this.props.navigator.pop()}
+                  title="Back"
+                />
               <Text style={styles.daftarMedia}>
                 Daftar Penulis
               </Text>

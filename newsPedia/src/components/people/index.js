@@ -20,7 +20,7 @@ export default class People extends Component {
                 <Text>
                     People Page
                 </Text>
-                <Button onPress={() => this.props.navigator.push({page: 'people'})}
+                <Button onPress={() => this.props.navigator.push({page: 'news'})}
                   title="Go To News Page"
                 />
               <Text style={styles.daftarMedia}>

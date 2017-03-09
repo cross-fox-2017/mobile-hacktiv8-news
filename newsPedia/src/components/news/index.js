@@ -29,7 +29,7 @@ export default class News extends Component {
                     News Page
                 </Text>
                 <Button onPress={() => this.props.navigator.push({page: 'people'})}
-                  title="People"
+                  title="Go to People Page"
                 />
               <View>
                   <TextInput style={styles.inputSearch} onChange={this.onHandleChange.bind(this)}></TextInput>

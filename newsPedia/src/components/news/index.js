@@ -13,7 +13,7 @@ export default class News extends Component {
     constructor(){
       super()
       this.state = {
-        news: datanews,
+        news: [],
         keyword: '',
       }
     }
@@ -22,7 +22,20 @@ export default class News extends Component {
         keyword: event.nativeEvent.text
       })
     }
+    componentDidMount(){
+      fetch('https://hn.algolia.com/api/v1/search')
+      .then((response)=>{
+        return response.json()
+      })
+      .then((data)=>{
+        this.setState({
+          news: data.hits
+        })
+      })
+      .catch(err => {})
+    }
     render() {
+      console.log(this.state.news);
         return (
             <View style={styles.container}>
                 <Text>
@@ -37,16 +50,22 @@ export default class News extends Component {
               <Text style={styles.daftarMedia}>
                 Daftar Media
               </Text>
-              {this.state.news.filter((dataFilter)=>{
-                  return dataFilter.name.toLowerCase().match(this.state.keyword.toLowerCase())
-              }).map((showDataNews, index)=>{
-                return (
-                  <Text key={index}>
-                      {showDataNews.name}
-                  </Text>
-                )
-                })
-              }
+              <View>
+                {this.state.news.length < 1 ? <Text>Loading...</Text> : <Text></Text>}
+                {this.state.news
+                  .filter((dataFilter)=>{
+                    return dataFilter.title !== null && dataFilter.title !== ''})
+                  .filter((dataFilter)=>{
+                    return dataFilter.title.toLowerCase().match(this.state.keyword.toLowerCase())})
+                  .map((showDataNews, index)=>{
+                    return (
+                      <Text key={index}>
+                          {showDataNews.title}
+                      </Text>
+                    )
+                  })
+                }
+              </View>
             </View>
         )
     }
